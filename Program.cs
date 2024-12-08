@@ -16,6 +16,13 @@ builder.Services.AddDbContext<NZWalksDBContext>(options =>
         builder.Configuration.GetConnectionString("NZWalksConnectionString"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("NZWalksConnectionString"))
     ));
+
+// add region repository
+builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

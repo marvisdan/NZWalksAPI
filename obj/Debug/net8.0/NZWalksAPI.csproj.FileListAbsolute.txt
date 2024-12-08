@@ -103,3 +103,5 @@
 /Users/marvisdan/web-project/NZWalksAPI/obj/Debug/net8.0/ref/NZWalksAPI.dll
 /Users/marvisdan/web-project/NZWalksAPI/bin/Debug/net8.0/MySqlConnector.dll
 /Users/marvisdan/web-project/NZWalksAPI/bin/Debug/net8.0/Pomelo.EntityFrameworkCore.MySql.dll
+/Users/marvisdan/web-project/NZWalksAPI/bin/Debug/net8.0/AutoMapper.dll
+/Users/marvisdan/web-project/NZWalksAPI/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
