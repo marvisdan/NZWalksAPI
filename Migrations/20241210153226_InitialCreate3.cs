@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace NZWalksAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class InitialCreate3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,11 +35,11 @@ namespace NZWalksAPI.Migrations
                 name: "Regions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Code = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RegionImageUrl = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
@@ -52,8 +54,8 @@ namespace NZWalksAPI.Migrations
                 name: "Walks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "longtext", nullable: false)
@@ -62,7 +64,8 @@ namespace NZWalksAPI.Migrations
                     WalkImageUrl = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DifficultyId = table.Column<int>(type: "int", nullable: false),
-                    RegionId = table.Column<int>(type: "int", nullable: false)
+                    RegionId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -81,6 +84,28 @@ namespace NZWalksAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "Difficulties",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Easy" },
+                    { 2, "Medium" },
+                    { 3, "Hard" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Regions",
+                columns: new[] { "Id", "Code", "Name", "RegionImageUrl" },
+                values: new object[,]
+                {
+                    { "14ceba71-4b51-4777-9b17-a5156b042262", "NSN", "Nelson", "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+                    { "688429e8-ad80-4585-b7f4-4c39ee1d8f54", "WLG", "Wellington", "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+                    { "688429e8-ad80-4585-b7f4-4c39ee1d8f57", "WLG", "Wellington", "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+                    { "cfa06ed2-bf65-4b65-948d-d5e7848ab5a1", "STL", "Southland", "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" },
+                    { "f7248fc3-2585-4efb-8d1d-1c555f4087f5", "AKL", "Auckland", "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Walks_DifficultyId",

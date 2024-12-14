@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using NZWalks.API.Models.DTO;
+using NZWalksAPI.Models.DTO;
 using NZWalksAPI.Data;
 using NZWalksAPI.Models.Domain;
 using NZWalksAPI.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-
 namespace NZWalksAPI.Controllers;
 
 // https://localhost:portNumber/api/regions
@@ -53,41 +52,26 @@ public class RegionsController : ControllerBase
         }
 
         //Map/ convert domain model to region DTO
-        var regionDto = new RegionDto()
-        {
-            Id = regionDomain.Id,
-            Name = regionDomain.Name,
-            Code = regionDomain.Code,
-            RegionImageUrl = regionDomain.RegionImageUrl
-        };
+
 
         //Return DTO to client
-        return Ok(regionDto);
+        return Ok(mapper.Map<RegionDto>(regionDomain));
     }
 
     // POST: /api/regions
     [HttpPost]
+    [ValidateModel]
     public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
     {
-        var regionDomainModel = new Region
-        {
-            Id = Guid.NewGuid().ToString(),
-            Name = addRegionRequestDto.Name,
-            Code = addRegionRequestDto.Code,
-            RegionImageUrl = addRegionRequestDto.RegionImageUrl
-        };
+
+
+        var regionDomainModel = mapper.Map<Region>(addRegionRequestDto);
 
         //Use domain model to create region
         regionDomainModel = await regionRepository.CreateAsync(regionDomainModel);
 
         //Map domain model back to DTO
-        var regionDto = new RegionDto
-        {
-            Id = regionDomainModel.Id,
-            Name = regionDomainModel.Name,
-            Code = regionDomainModel.Code,
-            RegionImageUrl = regionDomainModel.RegionImageUrl
-        };
+        var regionDto = mapper.Map<RegionDto>(regionDomainModel);
         return CreatedAtAction(nameof(GetById), new { id = regionDto.Id }, regionDto);
     }
 
@@ -95,31 +79,22 @@ public class RegionsController : ControllerBase
     // PUT update region
     [HttpPut]
     [Route("{id}")]  // Add guid constraint to route
+    [ValidateModel]
     public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateRegionRequestDto updateRegionRequest)
     {
+
         //MAP dto to domain model
-        var regionDomainModel = new Region
-        {
-            Code = updateRegionRequest.Code,
-            Name = updateRegionRequest.Name,
-            RegionImageUrl = updateRegionRequest.RegionImageUrl
-        };
+        var regionDomainModel = mapper.Map<Region>(updateRegionRequest);
+
+        //Update region using repository
         regionDomainModel = await regionRepository.UpdateAsync(id, regionDomainModel);
 
         if (regionDomainModel == null)
         {
             return NotFound();
         }
-        // Convert domain model back to DTO
-        var regionDto = new RegionDto
-        {
-            Id = regionDomainModel.Id,
-            Name = regionDomainModel.Name,
-            Code = regionDomainModel.Code,
-            RegionImageUrl = regionDomainModel.RegionImageUrl
-        };
 
-        return Ok(regionDto);
+        return Ok(mapper.Map<RegionDto>(regionDomainModel));
     }
 
     //DELETE: /api/regions/{id}
@@ -135,15 +110,6 @@ public class RegionsController : ControllerBase
             return NotFound();
         }
 
-        //Optional " return deleted region
-        var regionDto = new RegionDto
-        {
-            Id = regionDomainModel.Id,
-            Name = regionDomainModel.Name,
-            Code = regionDomainModel.Code,
-            RegionImageUrl = regionDomainModel.RegionImageUrl
-        };
-
-        return Ok(regionDto);
+        return Ok(mapper.Map<RegionDto>(regionDomainModel));
     }
 }

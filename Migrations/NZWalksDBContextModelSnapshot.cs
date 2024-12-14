@@ -32,11 +32,29 @@ namespace NZWalksAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Difficulties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Easy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Hard"
+                        });
                 });
 
             modelBuilder.Entity("NZWalksAPI.Models.Domain.Region", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("Code")
@@ -52,13 +70,49 @@ namespace NZWalksAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Regions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "f7248fc3-2585-4efb-8d1d-1c555f4087f5",
+                            Code = "AKL",
+                            Name = "Auckland",
+                            RegionImageUrl = "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        },
+                        new
+                        {
+                            Id = "688429e8-ad80-4585-b7f4-4c39ee1d8f54",
+                            Code = "WLG",
+                            Name = "Wellington",
+                            RegionImageUrl = "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        },
+                        new
+                        {
+                            Id = "14ceba71-4b51-4777-9b17-a5156b042262",
+                            Code = "NSN",
+                            Name = "Nelson",
+                            RegionImageUrl = "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        },
+                        new
+                        {
+                            Id = "cfa06ed2-bf65-4b65-948d-d5e7848ab5a1",
+                            Code = "STL",
+                            Name = "Southland",
+                            RegionImageUrl = "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        },
+                        new
+                        {
+                            Id = "688429e8-ad80-4585-b7f4-4c39ee1d8f57",
+                            Code = "WLG",
+                            Name = "Wellington",
+                            RegionImageUrl = "https://images.pexels.com/photos/5169939/pexels-photo-5169939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        });
                 });
 
             modelBuilder.Entity("NZWalksAPI.Models.Domain.Walk", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Description")
                         .IsRequired()
