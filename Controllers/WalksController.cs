@@ -31,11 +31,15 @@ public class WalksController : ControllerBase
     }
 
     // GET WALKS
-    //api/walks?filterOn=Name 
+    //api/walks?filterOn=Name&filterQuery=Track&sortBy=Name&isAscending=true&pageNumber=1&pageSize=10
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery)
+    public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+     [FromQuery] string? sortBy, [FromQuery] bool? isAscending,
+     [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
-        var walksDomainModel = await walkRepository.GetAllAsync();
+        var walksDomainModel = await walkRepository.GetAllAsync(filterOn, filterQuery, sortBy,
+        isAscending ?? true,
+        pageNumber, pageSize);
 
         //Map domain model into dto
         return Ok(mapper.Map<List<WalkDto>>(walksDomainModel));
