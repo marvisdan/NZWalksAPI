@@ -5,12 +5,15 @@ using NZWalksAPI.Models.Domain;
 using NZWalksAPI.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+
 namespace NZWalksAPI.Controllers;
+
 
 // https://localhost:portNumber/api/regions
 [ApiController]
 [Route("api/[controller]")]
-
+[Authorize]
 public class RegionsController : ControllerBase
 {
     private readonly NZWalksDBContext dbContext;
