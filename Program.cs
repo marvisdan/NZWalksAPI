@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using NZWalksAPI.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,9 @@ builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 
 // Add walk repository
 builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
+
+// Add Token Repository
+builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
