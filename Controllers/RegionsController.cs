@@ -13,7 +13,6 @@ namespace NZWalksAPI.Controllers;
 // https://localhost:portNumber/api/regions
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class RegionsController : ControllerBase
 {
     private readonly NZWalksDBContext dbContext;
@@ -29,6 +28,7 @@ public class RegionsController : ControllerBase
     // GET ALL REGIONS
     // https://localhost:portNumber/api/regions
     [HttpGet]
+    [Authorize(Roles = "Reader")]
     public async Task<IActionResult> GetAll()
     {
         // Get all regions from database
@@ -44,6 +44,8 @@ public class RegionsController : ControllerBase
     // https://localhost:portNumber/api/regions/id
     [HttpGet]
     [Route("{id}")]
+    [Authorize]
+    [Authorize(Roles = "Reader")]
     public async Task<IActionResult> GetById([FromRoute] string id)
     {
         // var region = dbContext.Regions.Find(id);
@@ -64,6 +66,7 @@ public class RegionsController : ControllerBase
     // POST: /api/regions
     [HttpPost]
     [ValidateModel]
+    [Authorize(Roles = "Writer")]
     public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
     {
 
@@ -83,6 +86,7 @@ public class RegionsController : ControllerBase
     [HttpPut]
     [Route("{id}")]  // Add guid constraint to route
     [ValidateModel]
+    [Authorize(Roles = "Writer")]
     public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateRegionRequestDto updateRegionRequest)
     {
 
@@ -103,6 +107,7 @@ public class RegionsController : ControllerBase
     //DELETE: /api/regions/{id}
     [HttpDelete]
     [Route("{id}")]
+    [Authorize(Roles = "Writer, Reader")]
     public async Task<IActionResult> Delete([FromRoute] string id)
     {
         //Check if region exists

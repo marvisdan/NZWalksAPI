@@ -5,6 +5,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using NZWalksAPI.Repositories;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
+using Microsoft.Extensions.FileProviders;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,9 +17,38 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "NZWalks API", Version = "v1" });
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = JwtBearerDefaults.AuthenticationScheme
+    }); ;
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
+                },
+                Scheme = "Oauth2",
+                Name = JwtBearerDefaults.AuthenticationScheme,
+                In = ParameterLocation.Header
+            },
+            new List<string>()
+        }
+    });
+});
 
 
 builder.Services.AddDbContext<NZWalksDBContext>(options =>
@@ -37,6 +71,9 @@ builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
 
 // Add Token Repository
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+
+// Add Image Repository
+builder.Services.AddScoped<IImageRepository, LocalImageRepository>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
@@ -87,6 +124,13 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Serve static files from the Images folder
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/Images",
+});
 
 app.MapControllers();
 app.MapGet("/", () => "Hello World!");

@@ -15,7 +15,7 @@ namespace NZWalksAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("NZWalksAPI.Models.Domain.Difficulty", b =>
@@ -49,6 +49,35 @@ namespace NZWalksAPI.Migrations
                             Id = 3,
                             Name = "Hard"
                         });
+                });
+
+            modelBuilder.Entity("NZWalksAPI.Models.Domain.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("FileSizeInBytes")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("NZWalksAPI.Models.Domain.Region", b =>
@@ -112,6 +141,7 @@ namespace NZWalksAPI.Migrations
             modelBuilder.Entity("NZWalksAPI.Models.Domain.Walk", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("Description")
