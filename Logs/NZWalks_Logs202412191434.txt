@@ -1,0 +1,5 @@
+2024-12-19 14:34:13.008 -05:00 [INF] User profile is available. Using '/Users/marvisdan/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-12-19 14:34:13.072 -05:00 [INF] Now listening on: http://localhost:5062
+2024-12-19 14:34:13.074 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-19 14:34:13.074 -05:00 [INF] Hosting environment: Development
+2024-12-19 14:34:13.074 -05:00 [INF] Content root path: /Users/marvisdan/web-project/NZWalksAPI

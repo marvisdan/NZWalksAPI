@@ -1,0 +1,18 @@
+2024-12-28 11:07:47.851 -05:00 [INF] User profile is available. Using '/Users/marvisdan/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-12-28 11:07:47.920 -05:00 [INF] Now listening on: http://localhost:5062
+2024-12-28 11:07:47.922 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-28 11:07:47.922 -05:00 [INF] Hosting environment: Development
+2024-12-28 11:07:47.922 -05:00 [INF] Content root path: /Users/marvisdan/web-project/NZWalksAPI
+2024-12-28 11:07:53.478 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/index.html - null null
+2024-12-28 11:07:53.547 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/index.html - 200 null text/html;charset=utf-8 70.2747ms
+2024-12-28 11:07:53.555 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-bundle.js - null null
+2024-12-28 11:07:53.555 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-standalone-preset.js - null null
+2024-12-28 11:07:53.555 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui.css - null null
+2024-12-28 11:07:53.569 -05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-12-28 11:07:53.570 -05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-12-28 11:07:53.570 -05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-12-28 11:07:53.571 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui.css - 200 152034 text/css 16.4532ms
+2024-12-28 11:07:53.571 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 16.7212ms
+2024-12-28 11:07:53.571 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 16.7247ms
+2024-12-28 11:07:54.350 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/v1/swagger.json - null null
+2024-12-28 11:07:54.746 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 395.883ms

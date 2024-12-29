@@ -3,6 +3,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NZWalksAPI.Models.Domain;
 using NZWalksAPI.Models.DTO;
+using Microsoft.Extensions.Logging;
+using System;
+
 // api/walks
 [Route("api/[controller]")]
 [ApiController]
@@ -10,7 +13,6 @@ public class WalksController : ControllerBase
 {
     private readonly IMapper mapper;
     private readonly IWalkRepository walkRepository;
-
     public WalksController(IMapper mapper, IWalkRepository walkRepository)
     {
         this.mapper = mapper;
@@ -37,12 +39,19 @@ public class WalksController : ControllerBase
      [FromQuery] string? sortBy, [FromQuery] bool? isAscending,
      [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
+
+        throw new Exception("Test exception");
         var walksDomainModel = await walkRepository.GetAllAsync(filterOn, filterQuery, sortBy,
         isAscending ?? true,
         pageNumber, pageSize);
 
+        //Create an exception
+        throw new Exception("This is a new exception");
+
         //Map domain model into dto
         return Ok(mapper.Map<List<WalkDto>>(walksDomainModel));
+
+
     }
 
     // GET WALK BY ID

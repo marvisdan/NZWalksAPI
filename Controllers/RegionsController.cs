@@ -6,6 +6,7 @@ using NZWalksAPI.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.Json;
 
 namespace NZWalksAPI.Controllers;
 
@@ -18,12 +19,13 @@ public class RegionsController : ControllerBase
     private readonly NZWalksDBContext dbContext;
     private readonly IRegionRepository regionRepository;
     private readonly IMapper mapper;
-
-    public RegionsController(NZWalksDBContext dbContext, IRegionRepository regionRepository, IMapper mapper)
+    private readonly ILogger<RegionsController> logger;
+    public RegionsController(NZWalksDBContext dbContext, IRegionRepository regionRepository, IMapper mapper, ILogger<RegionsController> logger)
     {
         this.dbContext = dbContext;
         this.regionRepository = regionRepository;
         this.mapper = mapper;
+        this.logger = logger;
     }
     // GET ALL REGIONS
     // https://localhost:portNumber/api/regions
@@ -69,8 +71,6 @@ public class RegionsController : ControllerBase
     [Authorize(Roles = "Writer")]
     public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
     {
-
-
         var regionDomainModel = mapper.Map<Region>(addRegionRequestDto);
 
         //Use domain model to create region

@@ -1,0 +1,16 @@
+2024-12-27 19:58:36.024 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/index.html - null null
+2024-12-27 19:58:36.095 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/index.html - 200 null text/html;charset=utf-8 75.156ms
+2024-12-27 19:58:36.097 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-standalone-preset.js - null null
+2024-12-27 19:58:36.098 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-bundle.js - null null
+2024-12-27 19:58:36.098 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui.css - null null
+2024-12-27 19:58:36.110 -05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-12-27 19:58:36.110 -05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-12-27 19:58:36.111 -05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-12-27 19:58:36.111 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui.css - 200 152034 text/css 12.6042ms
+2024-12-27 19:58:36.111 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 12.974ms
+2024-12-27 19:58:36.111 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 13.3052ms
+2024-12-27 19:58:36.525 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/favicon-32x32.png - null null
+2024-12-27 19:58:36.527 -05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-12-27 19:58:36.527 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/favicon-32x32.png - 200 628 image/png 2.4042ms
+2024-12-27 19:58:36.695 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/swagger/v1/swagger.json - null null
+2024-12-27 19:58:36.756 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 61.3077ms

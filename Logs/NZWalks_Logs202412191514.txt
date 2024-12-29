@@ -1,0 +1,9 @@
+2024-12-19 15:14:17.054 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/api/Walks?pageNumber=1&pageSize=10 - null null
+2024-12-19 15:14:17.108 -05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-19 15:14:17.137 -05:00 [INF] Executing endpoint 'WalksController.GetAll (NZWalksAPI)'
+2024-12-19 15:14:17.156 -05:00 [INF] Route matched with {action = "GetAll", controller = "Walks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller WalksController (NZWalksAPI).
+2024-12-19 15:14:17.446 -05:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-19 15:14:17.488 -05:00 [INF] Executed action WalksController.GetAll (NZWalksAPI) in 329.62ms
+2024-12-19 15:14:17.489 -05:00 [INF] Executed endpoint 'WalksController.GetAll (NZWalksAPI)'
+2024-12-19 15:14:17.491 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/api/Walks?pageNumber=1&pageSize=10 - 500 null application/problem+json; charset=utf-8 440.9107ms
+2024-12-19 15:14:53.864 -05:00 [INF] Application is shutting down...

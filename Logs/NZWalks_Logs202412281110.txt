@@ -1,0 +1,6 @@
+2024-12-28 11:10:03.016 -05:00 [INF] Application is shutting down...
+2024-12-28 11:10:06.985 -05:00 [INF] User profile is available. Using '/Users/marvisdan/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-12-28 11:10:07.042 -05:00 [INF] Now listening on: http://localhost:5062
+2024-12-28 11:10:07.044 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-28 11:10:07.044 -05:00 [INF] Hosting environment: Development
+2024-12-28 11:10:07.044 -05:00 [INF] Content root path: /Users/marvisdan/web-project/NZWalksAPI

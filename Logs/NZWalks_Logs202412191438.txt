@@ -1,0 +1,8 @@
+2024-12-19 14:38:54.325 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5062/api/Regions - null null
+2024-12-19 14:38:54.352 -05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-19 14:38:54.372 -05:00 [INF] Executing endpoint 'NZWalksAPI.Controllers.RegionsController.GetAll (NZWalksAPI)'
+2024-12-19 14:38:54.383 -05:00 [INF] Route matched with {action = "GetAll", controller = "Regions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller NZWalksAPI.Controllers.RegionsController (NZWalksAPI).
+2024-12-19 14:38:54.691 -05:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-19 14:38:54.733 -05:00 [INF] Executed action NZWalksAPI.Controllers.RegionsController.GetAll (NZWalksAPI) in 348.449ms
+2024-12-19 14:38:54.734 -05:00 [INF] Executed endpoint 'NZWalksAPI.Controllers.RegionsController.GetAll (NZWalksAPI)'
+2024-12-19 14:38:54.736 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5062/api/Regions - 500 null application/problem+json; charset=utf-8 412.3251ms
